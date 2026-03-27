@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const sliderImages = [
-  { image: '/products/Chutney.png', title: 'Chutney' },
+  { image: '/products/chutney.png', title: 'Chutney' },
   { image: '/products/Sauce2.png', title: 'Sauce' },
   { image: '/products/Pastes.png', title: 'Paste' },
 ]
