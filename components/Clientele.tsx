@@ -9,7 +9,7 @@ export function Clientele() {
     { name: 'Client 3', logo: '/Client3.webp' }, 
     { name: 'Client 4', logo: '/Client4.webp' },
   ];
-
+  
   return (
     <section className="bg-white py-16 md:py-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
