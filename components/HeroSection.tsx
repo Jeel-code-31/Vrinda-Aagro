@@ -145,7 +145,7 @@ export function HeroSection() {
         <div className="relative z-10 mb-20 max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col items-center text-center">
 
-            <h2 className="text-yellow-400 text-4xl md:text-2xl lg:text-4xl leading-relaxed tracking-tight max-w-5xl font-normal">
+            <h2 className="text-yellow-400 text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-snug sm:leading-relaxed md:leading-relaxed tracking-tight max-w-[95vw] md:max-w-4xl lg:max-w-5xl mx-auto font-normal drop-shadow-md">
               ' Vrinda Aagro blends <span className="font-black">innovation with traditional</span>
               to craft high-quality food
               products through advanced automation and

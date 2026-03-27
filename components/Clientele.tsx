@@ -18,7 +18,7 @@ export function Clientele() {
         <div className="flex items-center justify-center gap-4 md:gap-10 mb-16 md:mb-24">
           <div className="h-px bg-red-600 flex-1 hidden sm:block" />
           
-          <h2 className="text-red-600 text-3xl md:text-5xl font-extrabold uppercase tracking-[0.2em] text-center whitespace-nowrap">
+          <h2 className="text-red-600 text-2xl md:text-4xl lg:text-5xl font-extrabold uppercase tracking-[0.1em] md:tracking-[0.2em] text-center">
              OUR ESTEEMED CLIENTELE
           </h2>
           

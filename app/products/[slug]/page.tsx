@@ -4,7 +4,7 @@ import { useParams } from 'next/navigation'
 import { Lobster } from 'next/font/google'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-
+import {Navigation} from '@/components/Navigation'
 const lobster = Lobster({ subsets: ['latin'], weight: '400' })
 
 const ALL_PRODUCTS = [
@@ -108,7 +108,9 @@ export default function ProductDetail() {
     }
 
     return (
-        <main className="bg-white">
+        <>
+            <Navigation />
+            <main className="bg-white">
             <section className="max-w-7xl mx-auto px-4 py-16">
                 <div className="mb-12 text-center md:text-left">
                     <h2 className={`${lobster.className} text-red-600 text-5xl md:text-7xl mb-4`}>
@@ -192,9 +194,7 @@ export default function ProductDetail() {
                     </div>
                 </div>
             </section>
-            <Link href="/products" className="text-green-700 underline mt-4">
-                    Back to Products
-                </Link>
         </main>
+        </>
     )
 }
