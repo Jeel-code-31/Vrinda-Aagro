@@ -1,7 +1,8 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 const sliderImages = [
   "/Slider/S1.png",
@@ -12,28 +13,80 @@ const sliderImages = [
 
 export function HeroSection() {
   const [current, setCurrent] = useState(0);
-
+  const [direction, setDirection] = useState(1);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   const values = ['Trust', 'Quality', 'Precision', 'Integrity', 'Excellence', 'Innovation'];
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrent((prev) => (prev === sliderImages.length - 1 ? 0 : prev + 1));
-    }, 4000);
+      goToNext();
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
-  // ✅ NEW EFFECT (sequential loop)
+  // Values animation
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((prev) =>
         prev === values.length - 1 ? 0 : prev + 1
       );
-    }, 1200); // speed control
-
+    }, 1200);
     return () => clearInterval(interval);
   }, [values.length]);
+
+  const goToNext = () => {
+    setDirection(1);
+    setCurrent((prev) => (prev + 1) % sliderImages.length);
+  };
+
+  const goToPrev = () => {
+    setDirection(-1);
+    setCurrent((prev) => (prev - 1 + sliderImages.length) % sliderImages.length);
+  };
+
+  const goToSlide = (index: number) => {
+    setDirection(index > current ? 1 : -1);
+    setCurrent(index);
+  };
+
+  // Touch support
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!touchStart) return;
+    const touchEnd = e.changedTouches[0].clientX;
+    const diff = touchStart - touchEnd;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        goToNext();
+      } else {
+        goToPrev();
+      }
+    }
+    setTouchStart(0);
+  };
+
+  const slideVariants = {
+    enter: (dir: number) => ({
+      x: dir > 0 ? -800 : 800,
+      opacity: 0,
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+    },
+    exit: (dir: number) => ({
+      zIndex: 0,
+      x: dir > 0 ? 800 : -800,
+      opacity: 0,
+    }),
+  };
 
   return (
     <main className="bg-black">
@@ -114,7 +167,7 @@ export function HeroSection() {
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.5 }}
-                    className="absolute inset-0 w-full h-full object-cover"
+                    className="absolute inset-0 w-full h-full object-contain"
                     alt="Vrinda Aagro Infrastructure"
                   />
                 </AnimatePresence>
