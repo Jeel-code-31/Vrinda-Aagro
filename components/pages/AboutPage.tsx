@@ -177,7 +177,7 @@ export function AboutPage() {
                 <img
                   src="/P1.jpeg"
                   alt="Description"
-                  className="w-full h-full object-cover"
+                  className="w-full h-auto object-cover"
                 />
               </div>
               <p className="text-gray-900 font-bold mb-4">
