@@ -11,7 +11,19 @@ const lobster = Lobster({
   weight: '400',
 })
 
-const newsItems = [
+interface NewsItem {
+  id: number;
+  category: string;
+  date: string;
+  title: string;
+  excerpt: string;
+  image: string;
+  isFeatured: boolean;
+  isEvent?: boolean;
+  location?: string;
+}
+
+const newsItems: NewsItem[] = [
   {
     id: 1,
     category: "Innovation",
@@ -20,6 +32,8 @@ const newsItems = [
     excerpt: "After 12 months of R&D, we have achieved a natural preservation technique that extends flavor retention without synthetic additives.",
     image: "/Artical/Image1.png",
     isFeatured: true,
+    isEvent: false,
+    location: "Nashik"
   }
 ];
 

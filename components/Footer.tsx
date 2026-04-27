@@ -119,7 +119,11 @@ export function Footer() {
 
           {/* Copyright */}
           <p className="text-xs font-bold uppercase tracking-widest text-zinc-500 text-center">
-            © 2025 Vrinda Aagro — All Rights Reserved
+            © 2025 Vrinda Aagro — All Rights Reserved || <a href="https://perfectpixel.co.in">
+              <p className='text-xs font-bold tracking-widest text-zinc-500 text-center'>
+                Developed By Perfectpixel
+                </p>
+                </a>
           </p>
 
         </div>

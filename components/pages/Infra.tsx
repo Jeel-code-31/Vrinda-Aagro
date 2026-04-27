@@ -254,7 +254,7 @@ export function Infro() {
 }
 
 // ✅ FIXED Timeline Component
-function Timeline({ data }) {
+function Timeline({ data }: { data: { title: string; desc?: string }[] }) {
   const ref = useRef(null)
 
   const { scrollYProgress } = useScroll({
@@ -275,7 +275,7 @@ function Timeline({ data }) {
       />
 
       <div className="flex flex-col gap-16">
-        {data.map((item, i) => (
+        {data.map((item: { title: string; desc?: string }, i: number) => (
           <div key={i} className="relative flex items-center justify-center md:justify-between">
 
             {/* Left */}
@@ -306,7 +306,7 @@ function Timeline({ data }) {
 }
 
 // ✅ Card
-function Card({ item }) {
+function Card({ item }: { item: { title: string; desc?: string } }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}

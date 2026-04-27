@@ -12,7 +12,16 @@ const lobster = Lobster({
   weight: '400',
 })
 
-const services = [
+interface Service {
+  id: string;
+  title: string;
+  desc: string;
+  details: string;
+  icon: React.ReactNode;
+  image: string;
+}
+
+const services: Service[] = [
   {
     id: "01",
     title: "Agro-Processing Tech",
@@ -48,7 +57,7 @@ const services = [
 ]
 
 export default function ServicePage() {
-  const [activeService, setActiveService] = useState(null)
+  const [activeService, setActiveService] = useState<Service | null>(null)
 
   return (
     <div className="min-h-screen bg-[#FDFDFD] text-slate-900">
